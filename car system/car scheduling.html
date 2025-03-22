@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Spikey Drive - Scheduling</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #e3eaf1; /* Light blue-gray for a soft feel */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .schedule-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50; /* Deep blue for contrast */
+        }
+        .appointment {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        .completed {
+            background-color: #27ae60; /* Fresh green for completed */
+        }
+        .pending {
+            background-color: #e67e22; /* Warm orange for pending */
+        }
+        button {
+            background: #2980b9; /* Stylish blue */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #1f6690;
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule-container">
+        <h1>Appointment Scheduling</h1>
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="text" id="appointment" placeholder="Enter Appointment" required>
+        <input type="text" id="carModel" placeholder="Enter Car Model" required>
+        <input type="date" id="date" required>
+        <button onclick="addAppointment()">Add Appointment</button>
+        <div id="appointments">
+            <div class="appointment completed">Appointment 1 - Completed</div>
+            <div class="appointment pending">Appointment 2 - Pending</div>
+        </div>
+    </div>
+    <script>
+        function addAppointment() {
+            const name = document.getElementById('name').value;
+            const appointment = document.getElementById('appointment').value;
+            const carModel = document.getElementById('carModel').value;
+            const date = document.getElementById('date').value;
+            if (!name || !appointment || !carModel || !date) {
+                alert("Please fill in all fields");
+                return;
+            }
+            
+            const container = document.getElementById('appointments');
+            const newAppointment = document.createElement('div');
+            newAppointment.className = 'appointment pending';
+            newAppointment.innerText = `${name} - ${appointment} for ${carModel} on ${date} - Pending`;
+            container.appendChild(newAppointment);
+        }
+    </script>
+</body>
+</html>
